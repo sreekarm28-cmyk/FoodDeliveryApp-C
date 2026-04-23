@@ -49,9 +49,6 @@ public class Restaurant {
     // Status: PENDING → APPROVED or REJECTED
     private String status;
 
-    // Stores the reason if restaurant is rejected
-    private String rejectionReason;
-
     // Menu items belonging to this restaurant
     private final List<MenuItem> menuItems = new ArrayList<>();
 
@@ -71,7 +68,6 @@ public class Restaurant {
         this.operatingHours     = operatingHours;
         this.contactInformation = contactInformation;
         this.status             = "PENDING";
-        this.rejectionReason    = null;
     }
 
     // ── Menu Management ───────────────────────────────────────────
@@ -109,13 +105,11 @@ public class Restaurant {
 
     public void approve() {
         this.status = "APPROVED";
-        this.rejectionReason = null;
         System.out.println("[Restaurant] '" + name + "' APPROVED.");
     }
 
     public void reject(String reason) {
         this.status = "REJECTED";
-        this.rejectionReason = reason;
         System.out.println("[Restaurant] '" + name
             + "' REJECTED. Reason: " + reason);
     }
@@ -129,7 +123,6 @@ public class Restaurant {
     public String getOperatingHours()     { return operatingHours; }
     public String getContactInformation() { return contactInformation; }
     public String getStatus()             { return status; }
-    public String getRejectionReason()    { return rejectionReason; }
 
     // ── Setters (only mutable fields) ─────────────────────────────
 
