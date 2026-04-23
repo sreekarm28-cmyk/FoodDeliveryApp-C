@@ -1,12 +1,36 @@
 package edu.classproject.restaurant;
 
 import java.util.List;
-import java.util.Optional;
 
+/**
+ * ============================================================
+ *  RestaurantRepository.java  —  Data Access Layer Interface
+ *
+ *  SOLID Principles Applied:
+ *
+ *  D — Dependency Inversion Principle
+ *      High-level modules (Service) depend on this abstraction,
+ *      not on concrete storage implementations.
+ *
+ *  I — Interface Segregation Principle
+ *      Only CRUD + query operations live here.
+ *      Business logic (approve, reject, search) belongs
+ *      in the Service layer, not here.
+ * ============================================================
+ */
 public interface RestaurantRepository {
-    void save(Restaurant restaurant);
 
-    Optional<Restaurant> findById(String restaurantId);
+    void register(Restaurant restaurant);
+
+    Restaurant findById(String restaurantId);
 
     List<Restaurant> findAll();
+
+    List<Restaurant> findAllApproved();
+
+    List<Restaurant> findAllPending();
+
+    void update(Restaurant restaurant);
+
+    void remove(String restaurantId);
 }
